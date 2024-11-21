@@ -8,8 +8,13 @@ export const PostScreen = ({ route, navigation }: any) => {
 		navigation.setOptions({ title: post.title });
 	}, [post]);
 	return (
-		<View>
-			<Text>{post.bio}</Text>
-		</View>
+		<>
+			<View id="header">
+				<Text>
+					Written by: <Text style={{ fontWeight: 'bold' }}>{post.author}</Text>
+				</Text>
+			</View>
+			<Text>{post.body}</Text>
+		</>
 	);
 };

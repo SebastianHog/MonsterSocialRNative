@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
 	card: {
 		marginTop: 20,
-		width: 400,
-		height: 100,
+		width: '90%',
+		minHeight: 100,
 		backgroundColor: 'white',
 		borderRadius: 5,
 		paddingLeft: 10,
@@ -20,6 +20,7 @@ export const styles = StyleSheet.create({
 	},
 	tags: {
 		marginTop: 10,
+		marginBottom: 10,
 		flexDirection: 'row',
 	},
 });

@@ -1,57 +1,50 @@
 import { StyleSheet, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { HomeScreen } from './screens/HomeScreen/HomeScreen';
 import { FeedScreen } from './screens/FeedScreen/FeedScreen';
-import { SButton } from './components/SButton/SButton';
+import { HeaderButton } from './components/HeaderButton/HeaderButton';
 import { PostScreen } from './screens/PostScreen/PostScreen';
+import { GlobalProvider } from './State/GlobalStore';
+import { CreatePostScreen } from './screens/CreatePostScreen/CreatePostScreen';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
 	return (
-		<NavigationContainer>
-			<Stack.Navigator initialRouteName="feed">
-				<Stack.Screen
-					name="home"
-					component={HomeScreen}
-				/>
-				<Stack.Screen
-					name="feed"
-					component={FeedScreen}
-					options={{
-						title: 'Your feed',
-						headerStyle: {},
-						headerTitleStyle: {
-							fontWeight: 'bold',
-						},
-						headerRight: () => (
-							<SButton
-								onBPress={() => alert('This is a button!')}
-								style={{
-									backgroundColor: 'rgba(0, 0, 0, .1)',
-									borderRadius: 10,
-									width: 40,
-									height: 25,
-									justifyContent: 'center',
-									alignItems: 'center',
-								}}>
-								<Text
-									style={{
-										textAlign: 'center',
-									}}>
-									Post
-								</Text>
-							</SButton>
-						),
-					}}
-				/>
-				<Stack.Screen
-					name="post"
-					component={PostScreen}
-				/>
-			</Stack.Navigator>
-		</NavigationContainer>
+		<GlobalProvider>
+			<NavigationContainer>
+				<Stack.Navigator initialRouteName="feed">
+					<Stack.Screen
+						name="feed"
+						component={FeedScreen}
+						options={({ navigation }) => ({
+							title: 'Your feed',
+							headerTitleStyle: {
+								fontWeight: 'bold',
+							},
+							contentStyle: { backgroundColor: 'rgba(90, 130, 190, 1)' },
+							headerRight: () => <HeaderButton navigation={navigation} />,
+						})}
+					/>
+					<Stack.Screen
+						name="post"
+						component={PostScreen}
+						options={({ navigation }) => ({
+							contentStyle: { backgroundColor: 'rgba(90, 130, 190, 1)' },
+							headerRight: () => <HeaderButton navigation={navigation} />,
+						})}
+					/>
+					<Stack.Screen
+						name="create"
+						component={CreatePostScreen}
+						options={({ navigation }) => ({
+							contentStyle: { backgroundColor: 'rgba(90, 130, 190, 1)' },
+							headerRight: () => <HeaderButton navigation={navigation} />,
+						})}
+					/>
+				</Stack.Navigator>
+			</NavigationContainer>
+		</GlobalProvider>
 	);
 }
 
