@@ -17,6 +17,9 @@ export const styles = StyleSheet.create({
 	postAuthor: {
 		fontSize: 10,
 		fontWeight: 'bold',
-		textAlign: 'center',
+	},
+	tags: {
+		marginTop: 10,
+		flexDirection: 'row',
 	},
 });

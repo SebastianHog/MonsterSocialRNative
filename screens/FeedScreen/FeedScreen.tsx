@@ -10,7 +10,12 @@ export const FeedScreen = ({ navigation, route }: any) => {
 		<View style={styles.container}>
 			<FlatList
 				data={fakePosts}
-				renderItem={(item) => <PostCard post={item.item} />}
+				renderItem={(item) => (
+					<PostCard
+						post={item.item}
+						navigation={navigation}
+					/>
+				)}
 				contentContainerStyle={styles.list}
 			/>
 		</View>

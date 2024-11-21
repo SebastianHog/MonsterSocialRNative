@@ -1,9 +1,10 @@
-import { Button, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen } from './screens/HomeScreen/HomeScreen';
 import { FeedScreen } from './screens/FeedScreen/FeedScreen';
 import { SButton } from './components/SButton/SButton';
+import { PostScreen } from './screens/PostScreen/PostScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +45,10 @@ export default function App() {
 							</SButton>
 						),
 					}}
+				/>
+				<Stack.Screen
+					name="post"
+					component={PostScreen}
 				/>
 			</Stack.Navigator>
 		</NavigationContainer>
