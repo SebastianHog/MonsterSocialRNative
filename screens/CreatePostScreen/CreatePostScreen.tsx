@@ -43,6 +43,7 @@ export const CreatePostScreen = ({ navigation, route }: any) => {
 						style={styles.tagInput}
 						maxLength={8}
 						onChange={(e) => setTags([...tags, e.nativeEvent.text])}
+						// TODO: Fix tags so that they are added to the tags array when the user is done, not when they type.
 					/>
 					<TextInput
 						style={styles.tagInput}

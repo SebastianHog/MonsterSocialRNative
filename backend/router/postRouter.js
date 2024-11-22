@@ -4,9 +4,9 @@ import { Router } from 'express';
 const postRouter = Router();
 
 postRouter.get('/posts', async (req, res) => {
+	console.log('Fetching posts');
 	try {
 		const posts = await Posts.find();
-		console.log(posts);
 		res.json({ posts });
 	} catch (error) {
 		console.error(error);
@@ -19,7 +19,6 @@ postRouter.post('/posts', async (req, res) => {
 	try {
 		const newPost = new Posts(post);
 		await newPost.save();
-		console.log(newPost);
 		res.json({ post: newPost });
 	} catch (error) {
 		console.error(error);
